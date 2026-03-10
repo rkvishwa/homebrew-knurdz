@@ -1,4 +1,4 @@
-cask "sonar" do
+cask "sonar-code-editor" do
   version "1.0.0-beta.2"
   sha256 :no_check
 
