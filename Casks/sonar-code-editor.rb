@@ -7,13 +7,15 @@ cask "sonar-code-editor" do
   desc "IDE for monitored coding and collaboration"
   homepage "https://github.com/rkvishwa/Sonar-Code-Editor"
 
-  # 1. This tells Homebrew NOT to apply the quarantine flag during download
-  # This is the most important line for unsigned apps!
-  container download_security: false
-
+  # The exact name of the .app file inside your DMG
   app "Sonar Code Editor.app"
 
-  # 2. This manually strips the attribute after installation
+  # This runs as soon as the DMG is downloaded
+  preflight do
+    system_command "xattr", args: ["-d", "com.apple.quarantine", "#{staged_path}/Sonar.Code.Editor-#{version}-arm64.dmg"], sudo: false rescue nil
+  end
+
+  # This runs after the .app is moved to /Applications
   postflight do
     system_command "xattr",
                    args: ["-rd", "com.apple.quarantine", "#{appdir}/Sonar Code Editor.app"],
@@ -21,7 +23,7 @@ cask "sonar-code-editor" do
   end
 
   caveats <<~EOS
-    If you still see a 'Damaged' error, run this command once:
-    xattr -rd com.apple.quarantine /Applications/Sonar\\ Code\\ Editor.app
+    If you see a 'Damaged' error on first launch, run:
+    xattr -cr /Applications/"Sonar Code Editor.app"
   EOS
 end
