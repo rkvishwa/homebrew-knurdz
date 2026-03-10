@@ -7,7 +7,7 @@ cask "sonar-code-editor" do
   desc "IDE for monitored coding and collaboration"
   homepage "https://github.com/rkvishwa/Sonar-Code-Editor"
 
-  app "sonar-ide.app"
+  app "Sonar Code Editor.app"
 
   # This is the important part for your users:
   caveats <<~EOS
