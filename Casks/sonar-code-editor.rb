@@ -1,5 +1,5 @@
 cask "sonar-code-editor" do
-  version "1.0.0-beta.2"
+  version "1.0.0-beta.3"
   sha256 :no_check
 
   url "https://github.com/rkvishwa/Sonar-Code-Editor/releases/download/v#{version}/Sonar.Code.Editor-#{version}-arm64.dmg"
