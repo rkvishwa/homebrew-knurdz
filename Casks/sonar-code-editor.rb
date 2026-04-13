@@ -21,10 +21,4 @@ cask "sonar-code-editor" do
     # If the app isn't found or xattr fails, it won't crash the installation
     nil
   end
-
-  caveats <<~EOS
-    If you see a 'Damaged' error on first launch, it is a macOS security false-positive.
-    Fix it by running this in your terminal:
-    xattr -cr /Applications/"Sonar Code Editor.app"
-  EOS
 end
